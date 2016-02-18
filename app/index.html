@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/c3/c3.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- <link rel="stylesheet" href="fonts/fonts.css"> -->
+    <!-- endbuild -->
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="/bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+    <!--[if IE]>
+        <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body ng-app="myApp">
+    <header>
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Mortgage Calculator</h2>
+            </div>
+        </div>
+    </header>
+    <div class="clearfix"></div>
+    <div class="container" ng-controller="mortgageCtrl">
+        <div class="row">
+            <div class="col-xs-12">
+                <label>Price of home</label>
+                <p>
+                    <input type="number" ng-model="mortData.housePrice" ng-change="change()">
+                </p>
+                <p>Home Price: <strong>{{mortData.housePrice | currency}}</strong>
+                </p>
+            </div>
+            <div class="col-xs-12">
+                <label>Down Payment (Amount or %)</label>
+                <p>
+                    <input type="number" ng-model="mortData.downPayment" ng-change="change()">
+                </p>
+                <p>
+                    <p>Loan amount: <strong>{{loanAmount | currency}}</strong></p>
+                </p>
+            </div>
+            <div class="col-xs-6">
+                <label>Interest Rate (%)</label>
+                <p>
+                    <input type="number" step="0.01" ng-model="mortData.interestRate" ng-change="change()" min="0.01" max="15">
+                </p>
+            </div>
+            <div class="col-xs-6">
+                <label>Term (Years)</label>
+                <p>
+                    <input type="number" ng-model="mortData.term" ng-change="change()" min="1" max="30">
+                </p>
+            </div>
+            <div class="col-xs-6">
+                <label>Tax Rate (%)</label>
+                <p>
+                    <input type="number" step="0.01" ng-model="mortData.tax_rate" ng-change="change()" min="0" max="30">
+                </p>
+            </div>
+            <div class="col-xs-6" ng-show="pmi_required">
+                <label>PMI %</label>
+                <p>
+                    <input type="number" step="0.01" ng-model="mortData.pmi_rate" ng-change="change()" min="0" max="10">
+                </p>
+            </div>
+            <div class="col-xs-12">
+                <p>
+                    Your monthly payment will be: <span class="total">{{payment | currency}}</span>
+                </p>
+            </div>
+        </div>
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="/bower_components/jquery-legacy/dist/jquery.js"></script>
+        <script src="/bower_components/d3/d3.js"></script>
+        <script src="/bower_components/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js"></script>
+        <script src="/bower_components/gsap/src/uncompressed/TweenMax.js"></script>
+        <script src="/bower_components/scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js"></script>
+        <script src="/bower_components/c3/c3.js"></script>
+        <script src="/bower_components/angular/angular.min.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:js scripts/plugins.js -->
+        <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
+        <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
+        <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
+        <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
+        <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
+        <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
+        <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
+        <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>
+        <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
+        <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
+        <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
+        <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
+        <!-- endbuild -->
+        <!-- build:js scripts/main.js -->
+        <script src="scripts/myApp.js"></script>
+        <!-- <script src="scripts/ng-currency.js"></script> -->
+        <!-- endbuild -->
+</body>
