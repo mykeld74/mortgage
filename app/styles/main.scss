@@ -1,17 +1,8 @@
 @import 'bower_components/bootstrap-sass/assets/stylesheets/bootstrap';
 @import 'flat-ui';
-.test1 {
-    background-color: #009900;
-    min-height: 100px;
-    padding: 20px;
-    color: #ffffff;
-}
 
-.test2 {
-    background-color: #990000;
-    min-height: 100px;
-    padding: 20px;
-    color: #ffffff;
+body{
+	overflow: scroll;
 }
 
 input[type="text"] {
